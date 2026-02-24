@@ -1,42 +1,77 @@
 # TODO
 
-> Development plan
+This file is the active execution plan.
 
-Use this file as the current execution checklist. Keep it short and brutal.
-
-Guidance:
-- Specs live in `docs/specs/*` (PRD/Blueprint/definitions).
-- Repo context lives in `docs/INDEX.md`.
-- Decision log lives in `docs/JOURNAL.md`.
+Rules:
+- Write work as **steps**.
+- Every step must include:
+  - **Automated checks** (exact commands: lint/typecheck/tests/build)
+  - **UAT** (manual acceptance checklist)
+- Keep it current; archive aggressively.
 
 Archiving:
-- When this TODO gets long, move completed/old sections to `docs/archive/TODO_YYYY-MM-DD.md` and leave only the active plan here.
+- When the file becomes long/noisy, move completed sections to `docs/archive/TODO_YYYY-MM-DD.md`.
 
 ---
 
-## Phase 0 — Setup (day 0)
+## Step template
 
-- [ ] Fill in `docs/specs/prd.md`
-- [ ] Fill in `docs/specs/blueprint.md`
-- [ ] Update `AGENTS.md` with repo-specific constraints (if any)
-- [ ] Regenerate `docs/INDEX.md` using `docs/prompts/PROMPT-INDEX.md`
+Copy this block per step:
 
-## Phase 1 — MVP
+```
+## Step <NN> — <title>
 
-- [ ] Define MVP acceptance criteria (in PRD)
-- [ ] Implement core vertical slice
-- [ ] Add basic observability (logs + error taxonomy)
-- [ ] Add tests for the critical path
+Goal:
+- …
 
-## Phase 2 — Hardening
+Deliverable:
+- …
 
-- [ ] Add lint/format/typecheck
-- [ ] Add CI pipeline (optional)
-- [ ] Add security baseline (secrets handling, least privilege, audits)
-- [ ] Add backup/rollback notes (runbook)
+Changes:
+- Files to add/edit: …
 
-## Phase 3 — Release
+Automated checks:
+- … (commands)
 
-- [ ] Versioning/release process
-- [ ] Deployment runbook
-- [ ] On-call / ops notes (if applicable)
+UAT:
+- … (manual checklist)
+```
+
+---
+
+## Step 00 — project setup
+
+Goal:
+- Establish the project contract and repo context.
+
+Deliverable:
+- Filled-in PRD + Blueprint and a generated INDEX.
+
+Changes:
+- Edit: `docs/specs/prd.md`
+- Edit: `docs/specs/blueprint.md`
+- Generate/update: `docs/INDEX.md`
+
+Automated checks:
+- (add project-specific commands here once tooling exists)
+
+UAT:
+- Open `docs/INDEX.md` and confirm diagrams render on GitHub.
+- Confirm the file inventory matches the repo tree.
+
+## Step 01 — first vertical slice (MVP)
+
+Goal:
+- Implement the smallest end-to-end slice that proves the architecture.
+
+Deliverable:
+- A running path that exercises core inputs → logic → outputs.
+
+Changes:
+- Add/edit: (project-specific)
+
+Automated checks:
+- (commands)
+
+UAT:
+- (manual checklist)
