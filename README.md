@@ -8,12 +8,16 @@ This is a GitHub **template repository** you can fork/template for new projects.
 
 This template standardizes the minimum set of files that make a repo easy to operate with coding agents:
 
-- `AGENTS.md` — the **agent prompt** for this repo (instructions for coding agents; humans can read it, but it’s written for agents)
-- `TODO.md` — step-based plan; **each step should include automated checks + UAT**
+- `AGENTS.md` — the **agent prompt** for this repo (instructions for coding agents)
+- `TODO.md` — step-based plan; **each step includes automated checks + UAT**
 - `docs/specs/*` — PRD/Blueprint/definition specs (the contract)
 - `docs/INDEX.md` — periodically generated high-density repo context (architecture + inventory + diagrams)
 - `docs/prompts/*` — prompts used for repo maintenance (includes INDEX refresh prompt)
 - `docs/JOURNAL.md` — high-signal dev journal / ADR log with strict archive rules
+
+This repo intentionally does **not** include the Codex skills themselves.
+Skills are distributed separately via: `ruphware/cdd-skills`.
+See `cdd-skill.md` for install + usage.
 
 ## Quickstart (new project)
 
