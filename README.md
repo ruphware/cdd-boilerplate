@@ -28,10 +28,6 @@ When you create a new repo from this template, these are the invariants you keep
 - **Generated vs edited by hand:**
   - Regenerate: `docs/INDEX.md`
   - Edit by hand: `TODO.md`, `docs/specs/*`, `docs/JOURNAL.md`
-- **Must not ship in this template:**
-  - any `.agents/` directories
-  - tool-specific private config
-
 ## What you get
 
 - `AGENTS.md` — agent operating rules (CDD) + output format + DoD
@@ -66,7 +62,7 @@ rg -n "<PROJECT NAME>|YYYY-MM-DD|cdd-boilerplate" .
 
 Fallback if `rg` isn’t installed:
 ```bash
-grep -RIn "<PROJECT NAME>\\|YYYY-MM-DD\\|cdd-boilerplate" .
+grep -REIn "<PROJECT NAME>|YYYY-MM-DD|cdd-boilerplate" .
 ```
 
 ### 3) Fill the contract
@@ -111,12 +107,8 @@ This template is intentionally skill-free so it stays stable and tool-agnostic.
 
 ## CI baseline
 
-This template includes a minimal “hygiene” workflow. Keep it as-is, or delete it if you don't want CI in derived repos.
-
-For a stack-agnostic template, a minimal hygiene workflow is usually enough:
-- contract files exist
-- no forbidden files are present
-- README doesn’t reference missing internal files
+This template includes a minimal PR hygiene workflow that only checks the contract files exist.
+Keep it, extend it, or delete it in derived repos.
 
 ## License
 

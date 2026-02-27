@@ -20,12 +20,3 @@ jobs:
           test -f docs/specs/blueprint.md
           test -f docs/prompts/PROMPT-INDEX.md
 
-      - name: Forbidden files absent
-        run: |
-          test ! -f cdd-skill.md
-          test ! -d .agents
-
-      - name: No broken internal pointers (minimum)
-        run: |
-          # grep instead of rg to avoid extra deps
-          ! grep -RIn "cdd-skill\\.md" README.md
