@@ -1,0 +1,31 @@
+name: hygiene
+
+on:
+  pull_request:
+
+jobs:
+  repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Contract files present
+        run: |
+          test -f AGENTS.md
+          test -f README.md
+          test -f TODO.md
+          test -f docs/INDEX.md
+          test -f docs/JOURNAL.md
+          test -f docs/specs/prd.md
+          test -f docs/specs/blueprint.md
+          test -f docs/prompts/PROMPT-INDEX.md
+
+      - name: Forbidden files absent
+        run: |
+          test ! -f cdd-skill.md
+          test ! -d .agents
+
+      - name: No broken internal pointers (minimum)
+        run: |
+          # grep instead of rg to avoid extra deps
+          ! grep -RIn "cdd-skill\\.md" README.md

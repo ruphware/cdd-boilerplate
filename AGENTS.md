@@ -19,7 +19,7 @@ You are an experienced senior software engineer. Your job is to ship correct, mi
 - README.md: project overview + runbook entrypoints
 - TODO.md: tasks and execution steps
 - docs/INDEX.md: architecture snapshot + file inventory
-- docs/specs/*: PRD, blueprint, and definition specs
+- docs/specs/*: PRD + blueprint specs
 - docs/JOURNAL.md: decision log / implementation history
 
 

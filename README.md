@@ -1,71 +1,123 @@
 # cdd-boilerplate
 
-Chat‑Driven Development (CDD): agentic development methodology + Codex skill pack.
+A documentation-first **template contract** for Chat-Driven Development (CDD): the minimum repo shape that makes work with coding agents predictable, auditable, and easy to resume.
 
-This is a GitHub **template repository** you can fork/template for new projects.
+## What this is (and isn’t)
+
+This template gives you:
+- a repo-level operating contract for agents (`AGENTS.md`)
+- a step-based execution plan (`TODO.md`) with **checks + UAT** discipline
+- a docs system designed for “high-density context” + change safety (`docs/*`)
+
+This template does **not** give you:
+- a tech stack, runtime, or app framework
+- any bundled agent “skills” packs
+
+If you want optional Codex skills, install them separately from `ruphware/cdd-skills` (explicit-only). The template works without skills.
+
+## Template contract (invariants)
+
+When you create a new repo from this template, these are the invariants you keep true:
+
+- **Required files:** `AGENTS.md`, `README.md`, `TODO.md`
+- **Required docs:**
+  - `docs/INDEX.md` (generated context snapshot)
+  - `docs/JOURNAL.md` (ADR/dev journal)
+  - `docs/specs/prd.md` and `docs/specs/blueprint.md` (project contract)
+  - `docs/prompts/PROMPT-INDEX.md` (how to regenerate `docs/INDEX.md`)
+- **Generated vs edited by hand:**
+  - Regenerate: `docs/INDEX.md`
+  - Edit by hand: `TODO.md`, `docs/specs/*`, `docs/JOURNAL.md`
+- **Must not ship in this template:**
+  - any `.agents/` directories
+  - tool-specific private config
 
 ## What you get
 
-This template standardizes the minimum set of files that make a repo easy to operate with coding agents:
+- `AGENTS.md` — agent operating rules (CDD) + output format + DoD
+- `TODO.md` — step plan template; every step has **Automated checks** + **UAT**
+- `docs/specs/` — PRD + Blueprint templates (project contract)
+- `docs/INDEX.md` — generated repo context snapshot (architecture + inventory + diagrams)
+- `docs/JOURNAL.md` — high-signal dev journal / ADR log with archive rules
+- `docs/prompts/PROMPT-INDEX.md` — canonical instructions for regenerating `docs/INDEX.md`
 
-- `AGENTS.md` — the **agent prompt** for this repo (instructions for coding agents)
-- `TODO.md` — step-based plan; **each step includes automated checks + UAT**
-- `docs/specs/*` — PRD/Blueprint/definition specs (the contract)
-- `docs/INDEX.md` — periodically generated high-density repo context (architecture + inventory + diagrams)
-- `docs/prompts/*` — prompts used for repo maintenance (includes INDEX refresh prompt)
-- `docs/JOURNAL.md` — high-signal dev journal / ADR log with strict archive rules
+## Quickstart (new repo)
 
-This repo intentionally does **not** include the Codex skills themselves.
-Skills are distributed separately via: `ruphware/cdd-skills`.
-See `cdd-skill.md` for install + usage.
+### 1) Create repo from template
 
-## Quickstart (new project)
-
-### GitHub UI
+GitHub UI:
 - Click **Use this template** → create a new repo.
 
-### GitHub CLI
+GitHub CLI:
 ```bash
 gh repo create <owner>/<new-repo> --template ruphware/cdd-boilerplate --private
 # or --public
+
+git clone git@github.com:<owner>/<new-repo>.git
+cd <new-repo>
 ```
 
-## RENAME CHECKLIST (DO THIS FIRST)
+### 2) Replace template placeholders
 
-Right after templating:
-
-1) **Update identity strings**
-- `README.md` title + description
-- `docs/specs/prd.md` and `docs/specs/blueprint.md`: replace `<PROJECT NAME>` and `YYYY-MM-DD`
-
-2) **Search for template placeholders**
+Preferred:
 ```bash
 rg -n "<PROJECT NAME>|YYYY-MM-DD|cdd-boilerplate" .
 ```
 
-3) **Regenerate repo context**
-- Update `docs/INDEX.md` to match the real codebase using `docs/prompts/PROMPT-INDEX.md`.
-
-## Agent workflow (boot prompt)
-
-Copy/paste this as the repo boot prompt:
-
-```text
-Ingest AGENTS.md and assume the role.
-Read README.md docs/INDEX.md docs/specs/blueprint.md to understand the project.
-See top of docs/JOURNAL.md for implementation process and details.
+Fallback if `rg` isn’t installed:
+```bash
+grep -RIn "<PROJECT NAME>\\|YYYY-MM-DD\\|cdd-boilerplate" .
 ```
 
-## INDEX refresh workflow
+### 3) Fill the contract
 
-Copy/paste this when you want a fresh `docs/INDEX.md`:
+- Fill in:
+  - `docs/specs/prd.md`
+  - `docs/specs/blueprint.md`
+- Update `TODO.md` Step 00 to match your project.
+
+### 4) Regenerate `docs/INDEX.md`
+
+Use `docs/prompts/PROMPT-INDEX.md` as the canonical instruction set. Then verify Mermaid renders correctly on GitHub.
+
+### 5) Start building
+
+Begin Step 01 (first vertical slice) and add real **Automated checks** + **UAT**.
+
+## Agent workflow (no skills required)
+
+### Agent boot prompt (paste this into any coding agent)
 
 ```text
-We have new developments, and we need you to diligently create new index for our codebase:
-- Ingest @docs/prompts/PROMPT-INDEX.md and execute the prompt verbatim!
-- Use the correct tools to count the lines and fulfill all the requirements, including updating the diagrams and keeping the Mermaid syntax compatible with GitHub.
+Read AGENTS.md and follow it as the operating contract.
+Read README.md, TODO.md, docs/specs/blueprint.md, docs/specs/prd.md, docs/INDEX.md, docs/JOURNAL.md.
+Work in TODO.md steps; every step must include exact automated checks + a UAT checklist.
+Ask questions only if missing info would change the solution; otherwise proceed with explicit assumptions.
 ```
+
+### INDEX refresh prompt (paste this into any coding agent)
+
+```text
+Open docs/prompts/PROMPT-INDEX.md and execute it verbatim.
+Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches the repo.
+```
+
+## Optional: external CDD skills (not shipped here)
+
+If you use Codex CLI and want explicit-only skills, install them from:
+- `ruphware/cdd-skills`
+
+This template is intentionally skill-free so it stays stable and tool-agnostic.
+
+## CI baseline
+
+This template includes a minimal “hygiene” workflow. Keep it as-is, or delete it if you don't want CI in derived repos.
+
+For a stack-agnostic template, a minimal hygiene workflow is usually enough:
+- contract files exist
+- no forbidden files are present
+- README doesn’t reference missing internal files
 
 ## License
 
-MIT (see `LICENSE`).
+MIT (see `LICENSE`). After templating, update the copyright holder/year.

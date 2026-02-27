@@ -1,18 +1,22 @@
 # Context for `cdd-boilerplate`
 
 ## Executive Summary
-This repository provides templates and conventions for agentic / Chat-Driven-Development (CDD) projects, including standardized `AGENTS.md`, a task-oriented `TODO.md`, and a documentation system (`docs/INDEX.md`, specs, and journals) that makes repos easy for both humans and coding agents to understand and change.
+This repository is a documentation-first template contract for Chat-Driven Development (CDD): a small, stable set of files and prompts that make repos easier to operate with coding agents.
 
 ## How to update this file
 
-Use: `docs/prompts/PROMPT-INDEX.md` as the instruction set for generating a full `docs/INDEX.md` including diagrams and a file inventory.
+Use: `docs/prompts/PROMPT-INDEX.md` as the canonical instruction set for generating/updating `docs/INDEX.md`.
+
+## Template vs project repos
+
+- In this template repo, `docs/INDEX.md` may be a starter stub.
+- In repos created from this template, regenerate `docs/INDEX.md` so it reflects the actual codebase.
 
 ## Directory Overview
 
 - `AGENTS.md` — agent operating rules (CDD)
 - `TODO.md` — execution plan
 - `docs/` — documentation system
-- `templates/` — language-agnostic base templates + language overlays (planned)
 
 ## Status
 

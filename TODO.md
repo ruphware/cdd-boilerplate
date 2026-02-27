@@ -75,3 +75,15 @@ Automated checks:
 
 UAT:
 - (manual checklist)
+
+---
+
+## CDD boilerplate improvements (template hygiene)
+
+- [x] Remove `cdd-skill.md` from the template repo (skills live in `ruphware/cdd-skills`).
+- [x] Rewrite `README.md` to be self-contained, consistent, and tool-agnostic (no references to missing files).
+- [x] Add explicit boilerplate vs skills boundaries in `README.md` (mention `ruphware/cdd-skills`).
+- [x] Make prompts wording tool-agnostic (no `@docs/...` syntax assumptions).
+- [x] Align docs claims with real contents (no phantom `definition specs`, no phantom `templates/`).
+- [x] Ensure `docs/archive/` persists in git (add `.gitkeep`).
+- [x] Add minimal PR hygiene CI to enforce the contract.
