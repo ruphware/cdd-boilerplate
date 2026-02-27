@@ -6,7 +6,7 @@ When editing this file you act as an elite information architect. You don't like
 
 - Add an implementation detail entry under ENTRIES.
 - Focus on tricky implementation details, challenges, uncommon solutions.
-- Don't duplicate basic info: We have TODO.md for tasks, `docs/specs/*` for specifications, INDEX.md keeps the project tree, README.md is for runbook.
+- Don't duplicate basic info: We have TODO.md for tasks, `docs/specs/*` for specifications, `docs/INDEX.md` keeps the project tree, README.md is for runbook.
 - Skip entries if only minor bug fixes or refactoring, documentation or test-only changes or random configuration tweaks without architectural impact. In case of continuous implementation of a step / session combine multiple entries into one.
 - Condense & archive: when ENTRIES >= 20, condense the oldest 15 into a single well distilled summary under "SUMMARIZED (LATEST ON TOP)" with a descriptive title and the batch’s last-entry date; move the 15 originals to `docs/archive/JOURNAL_YYYY-MM-DD.md` and link to it; repeat until ≤20 remain.
 
