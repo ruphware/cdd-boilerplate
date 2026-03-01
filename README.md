@@ -1,14 +1,23 @@
-# cdd-boilerplate
+CDD-Boilerplate is a tiny, documentation-first **template contract** for building with coding agents - KISS, but with consistently high-quality outcomes.
 
-A tiny, documentation-first **template contract** for building with coding agents — KISS, but with consistently high-quality outcomes.
-
-**Positioning:**
+**Core values**
 - **Resumable**: any agent can pick up from TODO + INDEX + JOURNAL
 - **Auditable**: every step has checks + UAT
 - **Safe-by-default**: PRD/Blueprint are the contract; INDEX is the context snapshot
 - **Tool-agnostic**: works with a wide range of coding agents and editor/IDE integrations.
 
-## Human-in-the-loop contract (required)
+## What you get (and what you don't)
+
+This template gives you:
+- a repo-level operating contract for agents (`AGENTS.md`)
+- a step-based execution plan (`TODO.md`) with **Automated checks** + **UAT** discipline
+- a docs system designed for “high-density context” + change safety (`docs/*`)
+
+This template does **not** give you:
+- a tech stack, runtime, or app framework
+- any bundled agent “skills” packs
+
+## Human-in-the-loop contract
 
 This repo is a workflow contract, not just a folder template.
 
@@ -26,18 +35,7 @@ This repo is a workflow contract, not just a folder template.
 
 **CDD step gate:** nothing is “done” until the human runs the step’s UAT and signs it off.
 
-## What this is (and isn’t)
-
-This template gives you:
-- a repo-level operating contract for agents (`AGENTS.md`)
-- a step-based execution plan (`TODO.md`) with **Automated checks** + **UAT** discipline
-- a docs system designed for “high-density context” + change safety (`docs/*`)
-
-This template does **not** give you:
-- a tech stack, runtime, or app framework
-- any bundled agent “skills” packs
-
-## Template contract (invariants)
+## Template contract
 
 When you create a new repo from this template, keep these invariants true:
 
@@ -47,9 +45,9 @@ When you create a new repo from this template, keep these invariants true:
   - `docs/JOURNAL.md` (ADR/dev journal)
   - `docs/specs/prd.md` and `docs/specs/blueprint.md` (project contract)
   - `docs/prompts/PROMPT-INDEX.md` (how to regenerate `docs/INDEX.md`)
-- **Generated vs edited by hand:**
+- **Fully generated vs edited:**
   - Regenerate: `docs/INDEX.md`
-  - Edit by hand: `TODO.md`, `docs/specs/*`, `docs/JOURNAL.md`
+  - Edit: `TODO.md`, `docs/specs/*`, `docs/JOURNAL.md`
 
 ## Why this works (KISS, but high-quality)
 
@@ -62,7 +60,7 @@ At any moment you can answer:
 
 …and every step is small, testable, and gated by UAT.
 
-## Quickstart (new repo)
+## Quickstart 
 
 ### 1) Create repo from template
 
@@ -80,22 +78,18 @@ cd <new-repo>
 
 ### 2) Replace template placeholders
 
-Preferred:
-```bash
-rg -n "<PROJECT NAME>|YYYY-MM-DD|cdd-boilerplate" .
-```
-
-Fallback if `rg` isn’t installed:
 ```bash
 grep -REIn "<PROJECT NAME>|YYYY-MM-DD|cdd-boilerplate" .
 ```
 
 ### 3) Fill the contract
 
-- Fill in:
-  - `docs/specs/prd.md`
-  - `docs/specs/blueprint.md`
-- Update `TODO.md` Step 00 to match your project.
+- Run `TODO.md` Step 00 and:
+  - Fill in:
+    - `docs/specs/prd.md`
+    - `docs/specs/blueprint.md`
+  - Update this README.md.
+- Have fun.
 
 ### 4) Regenerate `docs/INDEX.md`
 
@@ -105,7 +99,33 @@ Use `docs/prompts/PROMPT-INDEX.md` as the canonical instruction set. Then verify
 
 Begin Step 01 (first vertical slice) and add real **Automated checks** + **UAT**.
 
-## Scaling conventions (optional)
+## Agent workflow 
+
+### Agent boot prompt
+
+```text
+Read AGENTS.md and follow it as the operating contract.
+Read README.md, TODO.md, docs/specs/blueprint.md, docs/specs/prd.md, docs/JOURNAL.md.
+Read docs/INDEX.md if present (otherwise generate it using docs/prompts/PROMPT-INDEX.md).
+Work in TODO.md steps; every step must include exact automated checks + a UAT checklist.
+Ask questions only if missing info would change the solution; otherwise proceed with explicit assumptions.
+```
+
+### INDEX refresh prompt 
+
+```text
+Open docs/prompts/PROMPT-INDEX.md and execute it verbatim.
+Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches the repo.
+```
+
+## Connected CDD skills for Agents 
+
+This template intentionally ships **no** tool-specific skill packs so it stays stable and portable.
+
+If you want to installs Agent Skills to work with this template, see:
+- [ruphware/cdd-skills](https://github.com/ruphware/cdd-skills)
+
+## How to scale when projects get bigger?
 
 ### Modular blueprints
 
@@ -121,36 +141,7 @@ Convention:
 - Root `TODO.md` should contain an “Active Work Index” linking to sub-TODOs.
 - A step lives in exactly one TODO file.
 
-## Agent workflow (no skills required)
-
-### Agent boot prompt (paste this into any coding agent)
-
-```text
-Read AGENTS.md and follow it as the operating contract.
-Read README.md, TODO.md, docs/specs/blueprint.md, docs/specs/prd.md, docs/JOURNAL.md.
-Read docs/INDEX.md if present (otherwise generate it using docs/prompts/PROMPT-INDEX.md).
-Work in TODO.md steps; every step must include exact automated checks + a UAT checklist.
-Ask questions only if missing info would change the solution; otherwise proceed with explicit assumptions.
-```
-
-### INDEX refresh prompt (paste this into any coding agent)
-
-```text
-Open docs/prompts/PROMPT-INDEX.md and execute it verbatim.
-Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches the repo.
-```
-
-## Optional: external CDD skills (not shipped here)
-
-This template intentionally ships **no** tool-specific skill packs so it stays stable and portable.
-
-If you want an optional, separate skills repo, see:
-- `ruphware/cdd-skills`
 
 ## License
 
-Free-to-use-adjust-just-don't-blame-me-for-anything-licence.
-
-Note: this README.md is part of the template; update it for your project when you use this template.
-
-After templating, update the copyright holder/year.
+Free-to-use-adjust-just-don't-blame-me-for-anything-licence. _Peace._ ✌️
