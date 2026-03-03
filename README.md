@@ -88,20 +88,23 @@ grep -REIn "<PROJECT NAME>|YYYY-MM-DD|cdd-boilerplate" .
   - Fill in:
     - `docs/specs/prd.md`
     - `docs/specs/blueprint.md`
+  - Use `docs/specs/prd.md` and `docs/specs/blueprint.md` to create `TODO.md` steps + tasks.
   - Update this README.md.
-- Have fun.
 
-### 4) Regenerate `docs/INDEX.md`
+### 4) Start building
 
-Use `docs/prompts/PROMPT-INDEX.md` as the canonical instruction set. Then verify Mermaid renders correctly on GitHub.
+```text
+Review and implement Step 01
+```
 
-### 5) Start building
+### 5) Regenerate `docs/INDEX.md`
 
-Begin Step 01 (first vertical slice) and add real **Automated checks** + **UAT**.
+```text
+Open docs/prompts/PROMPT-INDEX.md and execute it verbatim.
+Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches the repo.
+```
 
-## Agent workflow 
-
-### Agent boot prompt
+## Agent boot prompt
 
 ```text
 Read AGENTS.md and follow it as the operating contract.
@@ -111,36 +114,46 @@ Work in TODO.md steps; every step must include exact automated checks + a UAT ch
 Ask questions only if missing info would change the solution; otherwise proceed with explicit assumptions.
 ```
 
-### INDEX refresh prompt 
-
-```text
-Open docs/prompts/PROMPT-INDEX.md and execute it verbatim.
-Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches the repo.
-```
-
-## Connected CDD skills for Agents 
+## CDD Skills for Agents
 
 This template intentionally ships **no** tool-specific skill packs so it stays stable and portable.
 
-If you want to installs Agent Skills to work with this template, see:
+If you want to install Agent Skills to work with this template, see:
 - [ruphware/cdd-skills](https://github.com/ruphware/cdd-skills)
+
 
 ## How to scale when projects get bigger?
 
-### Modular blueprints
+As complexity grows, keep docs predictable and let `docs/specs/blueprint.md` route humans/agents to the right level of detail.
 
-Keep `docs/specs/blueprint.md` as the root and optionally branch into focused sub-specs (by domain/area). This lets agents load only what they need.
+### Docs taxonomy (recommended)
 
-### Multi-TODO
+- `docs/RUNBOOK.md`: exact dev/test/deploy commands + env vars
+- `docs/specs/blueprint.md`: root spec + “Spec Index” linking to leaf specs
+- `docs/specs/*-definition.md`: one subsystem per file (contracts, edge cases, tests)
+- `docs/INDEX.md`: generated context snapshot (diagrams + file inventory)
+- `docs/JOURNAL.md`: high-signal decisions/pitfalls (archive older entries under `docs/archive/`)
+- `docs/prompts/PROMPT-INDEX.md`: canonical instructions to regenerate `docs/INDEX.md`
 
-Some projects benefit from multiple TODOs by area.
+### Optional branching patterns (enable, don’t enforce)
 
-Convention:
-- Root `TODO.md` remains required.
-- Optional: `TODO-<area>.md` (e.g. `TODO-backend.md`, `TODO-ios.md`).
-- Root `TODO.md` should contain an “Active Work Index” linking to sub-TODOs.
-- A step lives in exactly one TODO file.
+- Specs: if `docs/specs/` gets large, branch into subfolders by domain (e.g. `client/`, `server/`, `ops/`) but keep `blueprint.md` as the single entrypoint.
+- TODOs: keep root `TODO.md`, and optionally add `TODO-<area>.md` and/or `TODO-next.md` (backlog). If you branch TODOs, consider adding an “Active Work Index” in root `TODO.md` and keeping each step in exactly one TODO file.
 
+Example (minimal scalable layout):
+```text
+docs/
+  RUNBOOK.md
+  INDEX.md
+  JOURNAL.md
+  prompts/PROMPT-INDEX.md
+  specs/blueprint.md
+  specs/<area>-definition.md
+  archive/
+TODO.md
+TODO-next.md
+TODO-backend.md
+```
 
 ## License
 
