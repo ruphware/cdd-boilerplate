@@ -107,11 +107,9 @@ Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches
 ## Agent boot prompt
 
 ```text
-Read AGENTS.md and follow it as the operating contract.
-Read README.md, TODO.md, docs/specs/blueprint.md, docs/specs/prd.md, docs/JOURNAL.md.
-Read docs/INDEX.md if present (otherwise generate it using docs/prompts/PROMPT-INDEX.md).
-Work in TODO.md steps; every step must include exact automated checks + a UAT checklist.
-Ask questions only if missing info would change the solution; otherwise proceed with explicit assumptions.
+Read AGENTS.md and assume the role.
+Ingest README.md, docs/specs/blueprint.md, docs/specs/prd.md to understand the project and top of docs/JOURNAL.md to get up to speed with the implementation process.
+Read docs/INDEX.md if present to get an overview of the codebase.
 ```
 
 ## CDD Skills for Agents
