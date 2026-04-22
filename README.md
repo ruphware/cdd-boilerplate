@@ -1,8 +1,9 @@
-[![CDD Project](https://img.shields.io/badge/CDD-Project-ecc569?style=flat-square&labelColor=0d1a26)](https://github.com/ruphware/cdd-boilerplate)
-
 # CDD Boilerplate
 
 CDD Boilerplate is a tiny, documentation-first **template contract** for building with coding agents - KISS, but with consistently high-quality outcomes.
+
+[![CDD Project](https://img.shields.io/badge/CDD-Project-ecc569?style=flat-square&labelColor=0d1a26)](https://github.com/ruphware/cdd-boilerplate)
+> This repo follows the [`CDD Project`](https://github.com/ruphware/cdd-boilerplate) + [`CDD Skills`](https://github.com/ruphware/cdd-skills) workflow with the local [`AGENTS.md`](./AGENTS.md) contract.
 
 **Core values**
 - **Resumable**: any agent can pick up from TODO + INDEX + JOURNAL
