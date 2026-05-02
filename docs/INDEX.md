@@ -15,6 +15,7 @@ Use: `docs/prompts/PROMPT-INDEX.md` as the canonical instruction set for generat
 ## Directory Overview
 
 - `AGENTS.md` — agent operating rules (CDD)
+- `.agents/skills/` — project-local skills for repo-specific agent behavior
 - `TODO.md` — execution plan
 - `docs/` — documentation system
 

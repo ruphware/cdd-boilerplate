@@ -116,7 +116,11 @@ Read docs/INDEX.md if present to get an overview of the codebase.
 
 ## CDD Skills for Agents
 
-This template intentionally ships **no** tool-specific skill packs so it stays stable and portable.
+This template ships one tiny project-local governance skill under `.agents/skills/`:
+
+- `cdd-drift-guard`: keeps `README.md`, `TODO.md`, `docs/INDEX.md`, `docs/specs/*`, and `docs/JOURNAL.md` aligned when repo behavior or structure changes, and applies the README’s scaling patterns before root docs get noisy.
+
+It still ships **no** tool-specific skill packs, so the template stays stable and portable.
 
 If you want to install Agent Skills to work with this template, see:
 - [ruphware/cdd-skills](https://github.com/ruphware/cdd-skills)
