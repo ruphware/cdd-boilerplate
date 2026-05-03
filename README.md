@@ -143,7 +143,7 @@ As complexity grows, keep docs predictable and let `docs/specs/blueprint.md`, ro
 - `docs/specs/blueprint.md`: root spec + “Spec Index” linking to leaf specs
 - `docs/specs/*-definition.md`: one subsystem per file (contracts, edge cases, tests)
 - `docs/INDEX.md`: generated context snapshot (diagrams + file inventory)
-- `docs/JOURNAL.md`: live journal in small repos; stable journal entrypoint once journals split
+- `docs/JOURNAL.md`: live journal in small repos; stable journal entrypoint/index once journals split
 - `docs/journal/JOURNAL.md`: cross-cutting / shared implementation notes when journals split
 - `docs/journal/JOURNAL-<area>.md`: area journal aligned to `TODO-<area>.md`
 - `docs/journal/SUMMARY.md`: condensed archive across split journals
@@ -155,7 +155,7 @@ As complexity grows, keep docs predictable and let `docs/specs/blueprint.md`, ro
 
 - Specs: if `docs/specs/` gets large, branch into subfolders by domain (e.g. `client/`, `server/`, `ops/`) but keep `blueprint.md` as the single entrypoint.
 - TODOs: keep root `TODO.md`, and optionally add `TODO-<area>.md` and/or `TODO-next.md` (backlog). If you branch TODOs, consider adding an “Active Work Index” in root `TODO.md` and keeping each step in exactly one TODO file.
-- Journals: if active implementation work branches into `TODO-<area>.md`, also branch the journal. Keep `docs/JOURNAL.md` as the stable entrypoint, create `docs/journal/JOURNAL-<area>.md` for each active workstream, use `docs/journal/JOURNAL.md` for cross-cutting notes, and use `docs/journal/SUMMARY.md` only for condensed archive history. `TODO-next.md` is backlog and does not require `JOURNAL-next.md`. Once split journaling starts, keep it.
+- Journals: if active implementation work branches into `TODO-<area>.md`, also branch the journal. Keep `docs/JOURNAL.md` as the stable entrypoint, rewrite it as a short current-state index after split activation, create `docs/journal/JOURNAL-<area>.md` for active workstreams, use `docs/journal/JOURNAL.md` for cross-cutting notes, and use `docs/journal/SUMMARY.md` only for condensed archive history. Once split journaling starts, keep it.
 
 Example (minimal scalable layout):
 ```text
