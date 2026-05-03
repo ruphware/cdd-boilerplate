@@ -30,4 +30,8 @@ Important: (add especially important remarks here; can be omitted if there aren'
 
 ## ENTRIES (LATEST ON TOP)
 
+
+
 ## SUMMARIZED (LATEST ON TOP)
+
+
