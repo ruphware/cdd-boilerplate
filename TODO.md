@@ -4,6 +4,7 @@
 
 Reference: `docs/specs/prd.md` and `docs/specs/blueprint.md`.
 Archive: move completed steps to `docs/archive/TODO_YYYY-MM-DD.md` when noisy.
+Scaling note: if active implementation work branches into `TODO-<area>.md`, keep root `TODO.md` as the index, enable split journaling, and route implementation notes to `docs/journal/JOURNAL-<area>.md`. `TODO-next.md` is backlog and does not require `JOURNAL-next.md`.
 
 ---
 
