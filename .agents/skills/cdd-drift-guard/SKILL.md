@@ -24,7 +24,7 @@ Use for changes that affect behavior, layout, entrypoints, workflow, architectur
 
 - Keep `README.md` current. It should describe current reality first; future direction can stay brief.
 - Keep `docs/specs/blueprint.md` as the root spec. Add a spec index there before branching into `docs/specs/<area>-definition.md` or domain subfolders such as `client/`, `server/`, or `ops/`.
-- Keep root `TODO.md` as the entrypoint. Split into `TODO-<area>.md` and/or `TODO-next.md` only when needed. Each step belongs in exactly one TODO file.
+- Keep root `TODO.md` as the entrypoint. Split into `TODO-<area>.md` files only when needed. Each step belongs in exactly one TODO file.
 - When any active implementation `TODO-<area>.md` exists, enable split-journal mode. Keep `docs/JOURNAL.md` as the stable journal entrypoint, create `docs/journal/`, move the live journal to `docs/journal/JOURNAL.md`, create matching `docs/journal/JOURNAL-<area>.md` files for active workstreams, and rewrite `docs/JOURNAL.md` as a short current-state index that stays meaningful after the split.
 - Once split-journal mode starts, keep it. Do not auto-collapse back to a single hot journal. Use `docs/journal/JOURNAL.md` only for repo-wide or cross-cutting notes; area-specific notes belong in exactly one matching `docs/journal/JOURNAL-<area>.md`.
 - Introduce `docs/RUNBOOK.md` when exact commands or env vars crowd `README.md`; `README.md` stays the top-level runbook entrypoint.
