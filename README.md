@@ -1,6 +1,6 @@
-# CDD Boilerplate
+# Chat Drive Development (CDD) Boilerplate
 
-CDD Boilerplate is a tiny, documentation-first **template contract** for building with coding agents - KISS, but with consistently high-quality outcomes.
+This is a tiny, documentation-first **template contract** for building with coding agents - KISS, but with consistently high-quality outcomes.
 
 **Core values**
 - **Resumable**: any agent can pick up from TODO + INDEX + JOURNAL
@@ -24,7 +24,7 @@ This template does **not** give you:
 This repo is a workflow contract, not just a folder template.
 
 **Humans must provide:**
-- Product intent (what “good” means)
+- Product intent (what "good" means)
 - Non-negotiable constraints
 - Acceptance criteria
 - Final sign-off via UAT
@@ -35,7 +35,7 @@ This repo is a workflow contract, not just a folder template.
 - Producing exact validation commands
 - Keeping changes small, consistent, and well-logged
 
-**CDD step gate:** nothing is “done” until the human runs the step’s UAT and signs it off.
+**CDD step gate:** nothing is "done" until the human runs the step’s UAT and signs it off.
 
 ## Template contract
 
