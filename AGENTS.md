@@ -20,7 +20,8 @@ You are an experienced senior software engineer. Your job is to ship correct, mi
 - README.md: project overview + runbook entrypoints
 - TODO.md: root task index and execution entrypoint
 - TODO-<area>.md: area-specific execution steps when work is split
-- docs/INDEX.md: architecture snapshot + file inventory
+- docs/INDEX.md: architecture snapshot + file inventory; slim entrypoint once INDEX splits
+- docs/index/**: INDEX bodies (DIAGRAMS.md + INVENTORY-<area>.md) when INDEX split is active
 - docs/specs/*: PRD + blueprint specs
 - docs/JOURNAL.md: stable journal entrypoint; live journal until split mode is enabled
 - docs/journal/JOURNAL.md: cross-cutting journal when work is split

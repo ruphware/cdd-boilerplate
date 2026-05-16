@@ -52,8 +52,11 @@ When you create a new repo from this template, keep these invariants true:
   - `docs/journal/JOURNAL-<area>.md` (area journal aligned to `TODO-<area>.md`)
   - `docs/journal/SUMMARY.md` (condensed archive across split journals)
   - `docs/journal/archive/` (raw archived journal batches)
+- **Optional scaled docs (create only when INDEX split is active):**
+  - `docs/index/DIAGRAMS.md` (mermaid diagram bodies for INDEX)
+  - `docs/index/INVENTORY-<area>.md` (file & API inventory bodies for INDEX; typical areas: `source`, `tests`, `other`)
 - **Fully generated vs edited:**
-  - Regenerate: `docs/INDEX.md`
+  - Regenerate: `docs/INDEX.md` (and `docs/index/**` together when INDEX split is active)
   - Edit: `TODO.md`, `docs/specs/*`, `docs/JOURNAL.md`
   - When split journaling is active, also edit: `docs/journal/*`
 
@@ -110,6 +113,7 @@ Review and implement Step 01
 ```text
 Open docs/prompts/PROMPT-INDEX.md and execute it verbatim.
 Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches the repo.
+If INDEX split is active, regenerate the slim docs/INDEX.md and all docs/index/** siblings in the same pass.
 ```
 
 ## Agent boot prompt
@@ -118,7 +122,7 @@ Update docs/INDEX.md so Mermaid renders on GitHub and the file inventory matches
 Read AGENTS.md and assume the role.
 Ingest README.md, docs/specs/blueprint.md, docs/specs/prd.md to understand the project and read docs/JOURNAL.md to get up to speed with the current journal layout and implementation process.
 If docs/JOURNAL.md points to split journals, continue with the matching docs/journal/JOURNAL-<area>.md and docs/journal/SUMMARY.md as needed.
-Read docs/INDEX.md if present to get an overview of the codebase.
+Read docs/INDEX.md if present to get an overview of the codebase. If it points to docs/index/** siblings, open the relevant ones for the area you are touching.
 ```
 
 ## CDD Skills for Agents
@@ -142,7 +146,9 @@ As complexity grows, keep docs predictable and let `docs/specs/blueprint.md`, ro
 - `docs/RUNBOOK.md`: exact dev/test/deploy commands + env vars
 - `docs/specs/blueprint.md`: root spec + “Spec Index” linking to leaf specs
 - `docs/specs/*-definition.md`: one subsystem per file (contracts, edge cases, tests)
-- `docs/INDEX.md`: generated context snapshot (diagrams + file inventory)
+- `docs/INDEX.md`: generated context snapshot (diagrams + file inventory); slim entrypoint once INDEX splits
+- `docs/index/DIAGRAMS.md`: mermaid diagram bodies for INDEX when split
+- `docs/index/INVENTORY-<area>.md`: file & API inventory bodies for INDEX when split
 - `docs/JOURNAL.md`: live journal in small repos; stable journal entrypoint/index once journals split
 - `docs/journal/JOURNAL.md`: cross-cutting / shared implementation notes when journals split
 - `docs/journal/JOURNAL-<area>.md`: area journal aligned to `TODO-<area>.md`
@@ -156,12 +162,18 @@ As complexity grows, keep docs predictable and let `docs/specs/blueprint.md`, ro
 - Specs: if `docs/specs/` gets large, branch into subfolders by domain (e.g. `client/`, `server/`, `ops/`) but keep `blueprint.md` as the single entrypoint.
 - TODOs: keep root `TODO.md`, and optionally add `TODO-<area>.md` files as work splits. If you branch TODOs, consider adding an “Active Work Index” in root `TODO.md` and keeping each step in exactly one TODO file.
 - Journals: if active implementation work branches into `TODO-<area>.md`, also branch the journal. Keep `docs/JOURNAL.md` as the stable entrypoint, rewrite it as a short current-state index after split activation, create `docs/journal/JOURNAL-<area>.md` for active workstreams, use `docs/journal/JOURNAL.md` for cross-cutting notes, and use `docs/journal/SUMMARY.md` only for condensed archive history. Once split journaling starts, keep it.
+- INDEX: if `docs/INDEX.md` exceeds ~300 lines or its diagram/inventory sections grow unboundedly with the codebase, split it. Keep `docs/INDEX.md` as a slim entrypoint (executive summary, project snapshot, layout pointers, dependency map, glossary, footer) and move bodies into `docs/index/DIAGRAMS.md` and `docs/index/INVENTORY-<area>.md` (typical areas: `source`, `tests`, `other`). Each inventory row belongs in exactly one sibling. Regenerate the entrypoint and siblings together via `docs/prompts/PROMPT-INDEX.md`. Once INDEX split starts, keep it.
 
 Example (minimal scalable layout):
 ```text
 docs/
   RUNBOOK.md
   INDEX.md
+  index/
+    DIAGRAMS.md
+    INVENTORY-source.md
+    INVENTORY-tests.md
+    INVENTORY-other.md
   JOURNAL.md
   archive/
   journal/
@@ -174,6 +186,50 @@ docs/
   specs/<area>-definition.md
 TODO.md
 TODO-backend.md
+```
+
+Example (slim `docs/INDEX.md` skeleton once INDEX split is active):
+````text
+# Context for `<project>`
+
+## Executive Summary
+...
+
+## Project Snapshot
+- **Frameworks**: ...
+- **Languages**: ...
+- **Architecture**: ...
+
+## Layout
+
+Diagrams → `docs/index/DIAGRAMS.md`
+- System Context
+- Component Interaction
+- (one bullet per H3 in DIAGRAMS.md)
+
+Inventory
+- `docs/index/INVENTORY-source.md` — primary source tree (`src/`, `lib/`, `apps/`)
+- `docs/index/INVENTORY-tests.md` — tests and fixtures
+- `docs/index/INVENTORY-other.md` — contracts, assets, scripts
+
+## Dependency Map
+```mermaid
+...
+```
+
+## Glossary
+- ...
+
+## Last Generated
+- ...
+````
+
+Each sibling under `docs/index/` opens with a one-line back-pointer so contributors landing there know the entrypoint:
+
+```text
+# INDEX body — Diagrams
+
+> Body of [docs/INDEX.md](../INDEX.md) — architecture, flow, and component diagrams.
 ```
 
 ## License
